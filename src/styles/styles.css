@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-decoration: none;
+}
+
+body {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+
+.navbar {
+  height: 50px;
+  width: 100vw;
+  background-color: #000;
+  position: -webkit-sticky;
+  position: sticky;
+}
+
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.tab button .active {
+  background-color: #ccc;
+}
+
+.tab button .tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+.tab button:hover {
+  background-color: #ddd;
+}
+/*# sourceMappingURL=styles.css.map */
