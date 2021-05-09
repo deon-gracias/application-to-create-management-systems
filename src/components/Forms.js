@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Box, Card, Container, Tab, Tabs } from "@material-ui/core";
 import TabPanel from "./tabs/TabPanel";
-import NavbarLayout from "./navbar/NavbarLayout";
 import Form from "./forms/Form";
 
 export const Forms = ({ projectId, projectData, reloadData }) => {

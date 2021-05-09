@@ -1,23 +1,12 @@
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import {
-  Box,
-  Button,
-  Card,
-  Container,
-  Tab,
-  Tabs,
-  Toolbar,
-} from "@material-ui/core";
-import { Add as AddIcon, Delete as DeleteIcon } from "@material-ui/icons";
-import { auth, db } from "../helper/firebase";
+import { Box, Button, Card, Tab, Tabs } from "@material-ui/core";
 import TabPanel from "./tabs/TabPanel";
 import DataTable from "./tables/DataTable";
 import AddTableModal from "./tables/AddTableModal";
-import NavbarLayout from "./navbar/NavbarLayout";
 import DeleteTableModal from "./tables/DeleteTableModal";
 
-export const Tables = ({ projectId, projectData, setProjectId }) => {
+export const Tables = ({ projectId, projectData }) => {
   const history = useHistory();
   let tableNames = [],
     headers = [];
