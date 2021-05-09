@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 import clsx from "clsx";
@@ -13,7 +13,6 @@ import TableRow from "@material-ui/core/TableRow";
 import TableSortLabel from "@material-ui/core/TableSortLabel";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import Paper from "@material-ui/core/Paper";
 import Checkbox from "@material-ui/core/Checkbox";
 import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
@@ -146,7 +145,7 @@ const EnhancedTableToolbar = (props) => {
   const history = useHistory();
 
   const classes = useToolbarStyles();
-  const { tableName, numSelected, selected, handleDelete } = props;
+  const { tableName, numSelected, handleDelete } = props;
 
   return (
     <Toolbar
