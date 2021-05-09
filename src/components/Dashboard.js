@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import {
   Box,
@@ -10,6 +10,7 @@ import {
 } from "@material-ui/core";
 import { Add as AddIcon, Delete as DeleteIcon } from "@material-ui/icons";
 import { auth } from "../helper/firebase";
+import AddViewModal from "./dashboard/AddViewModal";
 import { Forms } from "./Forms";
 
 export const Dashboard = ({
@@ -19,6 +20,8 @@ export const Dashboard = ({
   reloadData,
 }) => {
   const history = useHistory();
+
+  const [addViewOpen, setAddViewOpen] = useState(false);
 
   function checkAuthAndDetails() {
     if (projectId === "") {
@@ -44,7 +47,22 @@ export const Dashboard = ({
 
   return (
     <Grid container spacing={2}>
-      <Grid item xs={12}></Grid>
+      <AddViewModal addViewOpen={addViewOpen} setAddViewOpen={setAddViewOpen} />
+      <Grid item xs={12}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "flex-end",
+          }}
+        >
+          <IconButton color="primary" onClick={() => setAddViewOpen(true)}>
+            <AddIcon />
+          </IconButton>
+          <IconButton color="secondary">
+            <DeleteIcon />
+          </IconButton>
+        </Box>
+      </Grid>
       <Grid item xs={6}>
         <Card sx={{ textAlign: "center" }}>
           <CardContent>
