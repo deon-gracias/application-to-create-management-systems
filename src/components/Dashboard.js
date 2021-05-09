@@ -44,6 +44,7 @@ export const Dashboard = ({
 
   return (
     <Grid container spacing={2}>
+      <Grid item xs={12}></Grid>
       <Grid item xs={6}>
         <Card sx={{ textAlign: "center" }}>
           <CardContent>
