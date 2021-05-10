@@ -8,7 +8,7 @@ import {
   IconButton,
   Typography,
 } from "@material-ui/core";
-import { Add as AddIcon, Delete as DeleteIcon } from "@material-ui/icons";
+import { Add as AddIcon } from "@material-ui/icons";
 import { auth } from "../helper/firebase";
 import AddViewModal from "./dashboard/AddViewModal";
 import { Forms } from "./Forms";
@@ -21,6 +21,7 @@ export const Dashboard = ({
 }) => {
   const history = useHistory();
 
+  const [views, setViews] = useState([]);
   const [addViewOpen, setAddViewOpen] = useState(false);
 
   function checkAuthAndDetails() {
@@ -47,7 +48,13 @@ export const Dashboard = ({
 
   return (
     <Grid container spacing={2}>
-      <AddViewModal addViewOpen={addViewOpen} setAddViewOpen={setAddViewOpen} />
+      <AddViewModal
+        projectData={projectData}
+        views={views}
+        setViews={setViews}
+        addViewOpen={addViewOpen}
+        setAddViewOpen={setAddViewOpen}
+      />
       <Grid item xs={12}>
         <Box
           sx={{
@@ -57,9 +64,6 @@ export const Dashboard = ({
         >
           <IconButton color="primary" onClick={() => setAddViewOpen(true)}>
             <AddIcon />
-          </IconButton>
-          <IconButton color="secondary">
-            <DeleteIcon />
           </IconButton>
         </Box>
       </Grid>
@@ -98,6 +102,16 @@ export const Dashboard = ({
           reloadData={reloadData}
         />
       </Grid>
+      {views.map((view) => (
+        <Grid item xs={6}>
+          <Card sx={{ textAlign: "center" }}>
+            <CardContent>
+              <Typography fontSize="1.5rem">{view.name}</Typography>
+              <Typography fontSize="1.5rem">{view.desc}</Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+      ))}
     </Grid>
   );
 };
