@@ -21,7 +21,6 @@ import {
 } from "@material-ui/icons";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import AddProjectModal from "./project/AddProjectModal";
 import { auth } from "../helper/firebase";
 
 export const Project = ({
