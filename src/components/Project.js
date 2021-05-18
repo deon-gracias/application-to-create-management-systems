@@ -46,10 +46,7 @@ export const Project = ({
 
   return (
     <>
-      <AddProjectModal
-        addProjectOpen={addProjectOpen}
-        setAddProjectOpen={setAddProjectOpen}
-      />
+      <AddProjectModal />
       <AppBar>
         <Toolbar>
           <IconButton onClick={() => setAddProjectOpen(true)}>
@@ -102,7 +99,7 @@ export const Project = ({
   );
 };
 
-const AddProjectModal = (addProjectOpen, setAddProjectOpen, addNewProject) => (
+function AddProjectModal  (addProjectOpen, setAddProjectOpen, addNewProject) {return (
   <Modal
     open={addProjectOpen}
     onClose={() => {
@@ -186,4 +183,4 @@ const AddProjectModal = (addProjectOpen, setAddProjectOpen, addNewProject) => (
       </Box>
     </Fade>
   </Modal>
-);
+)}
