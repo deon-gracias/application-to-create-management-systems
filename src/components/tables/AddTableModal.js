@@ -17,7 +17,7 @@ export default function AddTableModal({
   setAddTableOpen,
 }) {
   const [tableName, setTableName] = useState("");
-  const [inputFields, setInputFields] = useState([]);
+  const [inputFields, setInputFields] = useState([{ name: "" }]);
 
   const handleAddFields = () => {
     const values = [...inputFields];
@@ -85,67 +85,62 @@ export default function AddTableModal({
           }}
         >
           <Container maxWidth="sm">
-            <form>
-              <Box>
-                <Typography color="textPrimary" variant="h4">
-                  Add Table
-                </Typography>
-              </Box>
-              <TextField
-                fullWidth
-                label="Name"
-                margin="normal"
-                name="text"
-                type="name"
-                value={tableName}
-                variant="outlined"
-                onChange={(e) => setTableName(e.currentTarget.value)}
-              />
-              {inputFields.map((inputField, index) => (
-                <>
-                  <TextField
-                    key={`${inputField} ${index}`}
-                    fullWidth
-                    label="Field"
-                    margin="normal"
-                    type="text"
-                    value={inputField.name}
-                    variant="outlined"
-                    onChange={(event) => handleInputChange(index, event)}
-                  />
-                  <Button
-                    type="button"
-                    onClick={() => handleRemoveFields(index)}
-                  >
-                    -
-                  </Button>
-                </>
-              ))}
+            <Box>
+              <Typography color="textPrimary" variant="h4">
+                Add Table
+              </Typography>
+            </Box>
+            <TextField
+              fullWidth
+              label="Name"
+              margin="normal"
+              name="text"
+              type="name"
+              value={tableName}
+              variant="outlined"
+              onChange={(e) => setTableName(e.currentTarget.value)}
+            />
+            {inputFields.map((inputField, index) => (
+              <>
+                <TextField
+                  key={`dynamicField${index}`}
+                  fullWidth
+                  label="Field"
+                  margin="normal"
+                  type="text"
+                  value={inputField.name}
+                  variant="outlined"
+                  onChange={(event) => handleInputChange(index, event)}
+                />
+                <Button type="button" onClick={() => handleRemoveFields(index)}>
+                  -
+                </Button>
+              </>
+            ))}
 
-              <Box sx={{ py: 1 }}>
-                <Button
-                  color="secondary"
-                  fullWidth
-                  size="large"
-                  variant="contained"
-                  onClick={handleAddFields}
-                >
-                  Add Field
-                </Button>
-              </Box>
-              <Box sx={{ py: 1 }}>
-                <Button
-                  color="primary"
-                  fullWidth
-                  size="large"
-                  type="submit"
-                  variant="contained"
-                  onClick={handleSubmit}
-                >
-                  Create Table
-                </Button>
-              </Box>
-            </form>
+            <Box sx={{ py: 1 }}>
+              <Button
+                color="secondary"
+                fullWidth
+                size="large"
+                variant="contained"
+                onClick={handleAddFields}
+              >
+                Add Field
+              </Button>
+            </Box>
+            <Box sx={{ py: 1 }}>
+              <Button
+                color="primary"
+                fullWidth
+                size="large"
+                type="submit"
+                variant="contained"
+                onClick={handleSubmit}
+              >
+                Create Table
+              </Button>
+            </Box>
           </Container>
         </Box>
       </Fade>
