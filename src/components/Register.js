@@ -39,7 +39,7 @@ export const Register = () => {
           })}
           onSubmit={(values) => {
             auth
-              .createuserwithemailandpassword(values.email, values.password)
+              .createUserWithEmailAndPassword(values.email, values.password)
               .then(() => {
                 history.push("/dashboard");
               })
