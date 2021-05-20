@@ -43,9 +43,6 @@ export const Project = ({
         history.push("/login");
       }
     });
-    if (projectId !== "") {
-      history.push("/dashboard");
-    }
   });
 
   function AddProjectModal() {
