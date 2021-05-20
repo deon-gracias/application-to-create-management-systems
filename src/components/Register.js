@@ -41,7 +41,7 @@ export const Register = () => {
             auth
               .createUserWithEmailAndPassword(values.email, values.password)
               .then(() => {
-                history.push("/dashboard");
+                history.push("/project");
               })
               .catch((err) => {
                 console.log(err);
