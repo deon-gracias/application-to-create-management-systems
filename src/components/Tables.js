@@ -37,68 +37,72 @@ export const Tables = ({
 
   return (
     <>
-      <AddTableModal
-        projectId={projectId}
-        addTableOpen={addTableOpen}
-        setAddTableOpen={setAddTableOpen}
-        reloadData={reloadData}
-      />
-      <DeleteTableModal
-        projectId={projectId}
-        projectData={projectData}
-        deleteTableOpen={deleteTableOpen}
-        setDeleteTableOpen={setDeleteTableOpen}
-      />
-      {segregateData()}
+      {projectId === "" ? null : (
+        <>
+          <AddTableModal
+            projectId={projectId}
+            addTableOpen={addTableOpen}
+            setAddTableOpen={setAddTableOpen}
+            reloadData={reloadData}
+          />
+          <DeleteTableModal
+            projectId={projectId}
+            projectData={projectData}
+            deleteTableOpen={deleteTableOpen}
+            setDeleteTableOpen={setDeleteTableOpen}
+          />
+          {segregateData()}
 
-      <Card>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "flex-end",
-          }}
-        >
-          <Button
-            sx={{ mx: 1 }}
-            color="primary"
-            variant="contained"
-            onClick={() => setAddTableOpen(true)}
-          >
-            Add
-          </Button>
-          <Button
-            color="secondary"
-            variant="contained"
-            onClick={() => setDeleteTableOpen(true)}
-          >
-            Delete
-          </Button>
-        </Box>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          indicatorColor="primary"
-          textColor="primary"
-          variant="scrollable"
-          scrollButtons="auto"
-        >
-          {tableNames.map((name, index) => (
-            <Tab label={name} key={`tab${index}`} />
-          ))}
-        </Tabs>
-        {tableNames.map((name, index) => (
-          <TabPanel value={value} index={index} key={`tab-panel${index}`}>
-            <Box>
-              <DataTable
-                projectId={projectId}
-                tableData={projectData.tables[index]}
-                tableIndex={index}
-                projectData={projectData}
-              />
+          <Card>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "flex-end",
+              }}
+            >
+              <Button
+                sx={{ mx: 1 }}
+                color="primary"
+                variant="contained"
+                onClick={() => setAddTableOpen(true)}
+              >
+                Add
+              </Button>
+              <Button
+                color="secondary"
+                variant="contained"
+                onClick={() => setDeleteTableOpen(true)}
+              >
+                Delete
+              </Button>
             </Box>
-          </TabPanel>
-        ))}
-      </Card>
+            <Tabs
+              value={value}
+              onChange={handleChange}
+              indicatorColor="primary"
+              textColor="primary"
+              variant="scrollable"
+              scrollButtons="auto"
+            >
+              {tableNames.map((name, index) => (
+                <Tab label={name} key={`tab${index}`} />
+              ))}
+            </Tabs>
+            {tableNames.map((name, index) => (
+              <TabPanel value={value} index={index} key={`tab-panel${index}`}>
+                <Box>
+                  <DataTable
+                    projectId={projectId}
+                    tableData={projectData.tables[index]}
+                    tableIndex={index}
+                    projectData={projectData}
+                  />
+                </Box>
+              </TabPanel>
+            ))}
+          </Card>
+        </>
+      )}
     </>
   );
 };
