@@ -74,6 +74,7 @@ function App() {
               setProjectId={setProjectId}
               projectsData={projectsData}
               addNewProject={addNewProject}
+              reloadData={fetchData()}
             />
           )}
         />
