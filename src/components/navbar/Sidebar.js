@@ -58,14 +58,7 @@ const Sidebar = ({ onMobileClose, openMobile, setProjectId }) => {
               icon={item.icon}
             />
           ))}
-          <NavItem
-            href="/project"
-            title="Back To Projects"
-            icon={BackIcon}
-            onClick={() => {
-              setProjectId("");
-            }}
-          />
+          <NavItem href="/project" title="Back To Projects" icon={BackIcon} />
           <NavItem
             href="/login"
             title="Logout"
