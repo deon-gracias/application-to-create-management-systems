@@ -28,14 +28,11 @@ export const Project = ({
   setProjectId,
   projectsData,
   addNewProject,
+  reloadData,
 }) => {
   const history = useHistory();
 
   const [addProjectOpen, setAddProjectOpen] = useState(false);
-
-  function closeProject() {
-    setAddProjectOpen(false);
-  }
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
@@ -93,6 +90,7 @@ export const Project = ({
                   tables: [],
                 });
                 setAddProjectOpen(false);
+                reloadData();
               }}
             >
               {({
