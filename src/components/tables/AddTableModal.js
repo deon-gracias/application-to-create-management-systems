@@ -15,6 +15,7 @@ export default function AddTableModal({
   projectId,
   addTableOpen,
   setAddTableOpen,
+  reloadData,
 }) {
   const [tableName, setTableName] = useState("");
   const [inputFields, setInputFields] = useState([{ name: "" }]);
@@ -54,6 +55,7 @@ export default function AddTableModal({
         db.collection("projects").doc(projectId).set(data);
       });
     setAddTableOpen(false);
+    reloadData();
   };
 
   return (

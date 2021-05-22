@@ -6,7 +6,12 @@ import DataTable from "./tables/DataTable";
 import AddTableModal from "./tables/AddTableModal";
 import DeleteTableModal from "./tables/DeleteTableModal";
 
-export const Tables = ({ projectId, projectData }) => {
+export const Tables = ({
+  projectId,
+  projectData,
+  setProjectId,
+  reloadData,
+}) => {
   const history = useHistory();
   let tableNames = [],
     headers = [];
@@ -36,6 +41,7 @@ export const Tables = ({ projectId, projectData }) => {
         projectId={projectId}
         addTableOpen={addTableOpen}
         setAddTableOpen={setAddTableOpen}
+        reloadData={reloadData}
       />
       <DeleteTableModal
         projectId={projectId}

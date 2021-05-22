@@ -29,9 +29,8 @@ function App() {
     fetchData();
   }, [currentUser]);
 
-  const fetchData = async () => {
-    await db
-      .collection("projects")
+  const fetchData = () => {
+    db.collection("projects")
       .get()
       .then((querySnapshot) => {
         let projectArray = {};
