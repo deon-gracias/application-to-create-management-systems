@@ -62,6 +62,7 @@ export const Login = ({ projectId }) => {
             handleBlur,
             handleChange,
             handleSubmit,
+            isSubmitting,
             touched,
             values,
           }) => (
