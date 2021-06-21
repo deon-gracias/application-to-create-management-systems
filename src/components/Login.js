@@ -44,7 +44,7 @@ export const Login = ({ projectId }) => {
               .required("Email is required"),
             password: Yup.string().max(255).required("Password is required"),
           })}
-          onSubmit={(values) => {
+          onSubmit={(values, { setSubmitting }) => {
             auth
               .signInWithEmailAndPassword(values.email, values.password)
               .then((res) => {
@@ -52,8 +52,9 @@ export const Login = ({ projectId }) => {
               })
               .catch((err) => {
                 console.log(err);
-                alert("Invalid Email or  Password");
+                alert(err.message);
               });
+            setSubmitting(false);
           }}
         >
           {({
@@ -99,6 +100,7 @@ export const Login = ({ projectId }) => {
               <Box sx={{ py: 2 }}>
                 <Button
                   color="primary"
+                  disabled={isSubmitting}
                   fullWidth
                   size="large"
                   type="submit"
