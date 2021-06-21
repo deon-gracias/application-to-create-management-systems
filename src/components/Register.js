@@ -35,9 +35,12 @@ export const Register = () => {
               .email("Must be a valid email")
               .max(255)
               .required("Email is required"),
-            password: Yup.string().max(255).required("password is required"),
+            password: Yup.string()
+              .min(6)
+              .max(255)
+              .required("password is required"),
           })}
-          onSubmit={(values) => {
+          onSubmit={(values, isSubmitting) => {
             auth
               .createUserWithEmailAndPassword(values.email, values.password)
               .then(() => {
@@ -46,6 +49,7 @@ export const Register = () => {
               .catch((err) => {
                 console.log(err);
               });
+            isSubmitting(false);
           }}
         >
           {({
