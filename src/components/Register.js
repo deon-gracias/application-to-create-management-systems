@@ -40,7 +40,7 @@ export const Register = () => {
               .max(255)
               .required("password is required"),
           })}
-          onSubmit={(values, isSubmitting) => {
+          onSubmit={(values, { setSubmitting }) => {
             auth
               .createUserWithEmailAndPassword(values.email, values.password)
               .then(() => {
@@ -48,8 +48,9 @@ export const Register = () => {
               })
               .catch((err) => {
                 console.log(err);
+                alert(err.message);
               });
-            isSubmitting(false);
+            setSubmitting(false);
           }}
         >
           {({
