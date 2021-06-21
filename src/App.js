@@ -49,10 +49,9 @@ function App() {
   const addNewProject = (project) => {
     let newProjectId = "";
     db.collection("projects")
-      .doc()
-      .set(project)
+      .add(project)
       .then((docRef) => (newProjectId = docRef.id));
-    setProjectsData([...projectsData, { newProjectId: project }]);
+    setProjectsData([...projectsData, { newProjectId: newProjectId }]);
   };
 
   return (
@@ -74,7 +73,7 @@ function App() {
               setProjectId={setProjectId}
               projectsData={projectsData}
               addNewProject={addNewProject}
-              reloadData={fetchData()}
+              reloadData={fetchData}
             />
           )}
         />
