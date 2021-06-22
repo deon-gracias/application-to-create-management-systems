@@ -81,7 +81,7 @@ export default function DeleteTableModal({
           <Container maxWidth="sm">
             <Box sx={{ mb: 3 }}>
               <Typography color="textPrimary" variant="h4">
-                Delete Table
+                Delete Project
               </Typography>
             </Box>
             {Object.keys(projectsData).map((projectId, index) => {
