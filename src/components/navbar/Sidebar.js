@@ -59,16 +59,6 @@ const Sidebar = ({ onMobileClose, openMobile, setProjectId }) => {
             />
           ))}
           <NavItem href="/project" title="Back To Projects" icon={BackIcon} />
-          <NavItem
-            href="/login"
-            title="Logout"
-            icon={LogOutIcon}
-            onClick={() => {
-              auth.signOut().then(() => {
-                history.push("/login");
-              });
-            }}
-          />
         </List>
       </Box>
       <Box sx={{ flexGrow: 1 }} />
