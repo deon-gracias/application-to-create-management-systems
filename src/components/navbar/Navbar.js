@@ -5,7 +5,7 @@ import { Menu as MenuIcon } from "@material-ui/icons/";
 const Navbar = ({ onMobileNavOpen, ...rest }) => (
   <AppBar elevation={0} {...rest}>
     <Toolbar>
-      <Box sx={{ flexGrow: 1 }} />
+      <Box />
       <IconButton color="inherit" onClick={onMobileNavOpen}>
         <MenuIcon />
       </IconButton>
