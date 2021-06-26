@@ -40,7 +40,7 @@ export default function AddViewModal({
 
   function handleAddView() {
     if (name === "" || table === "" || header === "" || display === "") {
-      alert("Please Choose Fill all the Fields");
+      alert("Please Choose or Fill all the Fields");
       return;
     } else if (views.includes(name)) {
       alert("View with given name already exists");
