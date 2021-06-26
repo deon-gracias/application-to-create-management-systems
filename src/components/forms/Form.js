@@ -22,6 +22,7 @@ const Form = ({ projectData, tableIndex, headers, projectId, reloadData }) => {
           projectData.tables[tableIndex].data
         ).slice(-1);
         let lastIndex = parseInt(lastIndexArray[0]) || 0;
+
         let data = [];
         Object.values(values).forEach((val) => data.push(val));
         projectData.tables[tableIndex].data[++lastIndex] = data;
