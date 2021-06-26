@@ -55,6 +55,7 @@ export const Project = ({
           <IconButton
             onClick={() =>
               auth.signOut().then(() => {
+                setProjectId("");
                 history.push("/login");
               })
             }
