@@ -5,6 +5,7 @@ import TabPanel from "./tabs/TabPanel";
 import DataTable from "./tables/DataTable";
 import AddTableModal from "./tables/AddTableModal";
 import DeleteTableModal from "./tables/DeleteTableModal";
+import { auth } from "../helper/firebase";
 
 export const Tables = ({
   projectId,
@@ -13,8 +14,6 @@ export const Tables = ({
   reloadData,
 }) => {
   const history = useHistory();
-  let tableNames = [],
-    headers = [];
 
   const [value, setValue] = useState(0);
   const [addTableOpen, setAddTableOpen] = useState(false);
@@ -24,23 +23,25 @@ export const Tables = ({
     setValue(newValue);
   };
 
-  function segregateData() {
+  function checkAuthAndDetails() {
     if (projectId === "") {
       history.push("/project");
-    } else {
-      projectData.tables.forEach((table) => {
-        tableNames.push(table.name);
-        headers.push(table.headers);
-      });
     }
+    auth.onAuthStateChanged((user) => {
+      if (!user) {
+        history.push("/login");
+      }
+    });
   }
 
   return (
     <>
+      {checkAuthAndDetails()}
       {projectId === "" ? null : (
         <>
           <AddTableModal
             projectId={projectId}
+            projectData={projectData}
             addTableOpen={addTableOpen}
             setAddTableOpen={setAddTableOpen}
             reloadData={reloadData}
@@ -51,7 +52,6 @@ export const Tables = ({
             deleteTableOpen={deleteTableOpen}
             setDeleteTableOpen={setDeleteTableOpen}
           />
-          {segregateData()}
 
           <Card>
             <Box
@@ -84,16 +84,16 @@ export const Tables = ({
               variant="scrollable"
               scrollButtons="auto"
             >
-              {tableNames.map((name, index) => (
-                <Tab label={name} key={`tab${index}`} />
+              {projectData.tables.map((table, index) => (
+                <Tab label={table.name} key={`tab${index}`} />
               ))}
             </Tabs>
-            {tableNames.map((name, index) => (
+            {projectData.tables.map((table, index) => (
               <TabPanel value={value} index={index} key={`tab-panel${index}`}>
                 <Box>
                   <DataTable
                     projectId={projectId}
-                    tableData={projectData.tables[index]}
+                    tableData={table}
                     tableIndex={index}
                     projectData={projectData}
                   />
