@@ -31,6 +31,16 @@ export const Project = ({
   const [addProjectOpen, setAddProjectOpen] = useState(false);
   const [deleteProjectOpen, setDeleteProjectOpen] = useState(false);
 
+  function checkAuthAndDetails() {
+    auth.onAuthStateChanged((user) => {
+      if (!user) {
+        history.push("/login");
+      }
+    });
+  }
+
+  checkAuthAndDetails();
+
   return (
     <>
       <AddProjectModal
