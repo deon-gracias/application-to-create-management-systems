@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { Box, Card, Container, Tab, Tabs } from "@material-ui/core";
 import TabPanel from "./tabs/TabPanel";
 import Form from "./forms/Form";
+import { auth } from "../helper/firebase";
 
 export const Forms = ({ projectId, projectData, reloadData }) => {
   const history = useHistory();
@@ -15,6 +16,17 @@ export const Forms = ({ projectId, projectData, reloadData }) => {
     setValue(newValue);
   };
 
+  function checkAuthAndDetails() {
+    if (projectId === "") {
+      history.push("/project");
+    }
+    auth.onAuthStateChanged((user) => {
+      if (!user) {
+        history.push("/login");
+      }
+    });
+  }
+
   function segregateData() {
     if (projectId === "") {
       history.push("/project");
@@ -26,9 +38,11 @@ export const Forms = ({ projectId, projectData, reloadData }) => {
     }
   }
 
+  checkAuthAndDetails();
+  segregateData();
+
   return (
     <Card>
-      {segregateData()}
       <Tabs
         value={value}
         onChange={handleChange}
