@@ -13,6 +13,7 @@ import { db } from "../../helper/firebase";
 
 export default function AddTableModal({
   projectId,
+  projectData,
   addTableOpen,
   setAddTableOpen,
   reloadData,
@@ -55,7 +56,7 @@ export default function AddTableModal({
         db.collection("projects").doc(projectId).set(data);
       });
     setAddTableOpen(false);
-    reloadData();
+    projectData.tables.push({ name: tableName, data: {}, headers: headers });
   };
 
   return (
