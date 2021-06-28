@@ -51,7 +51,8 @@ function App() {
     db.collection("projects")
       .add(project)
       .then((docRef) => (newProjectId = docRef.id));
-    setProjectsData([...projectsData, { newProjectId: newProjectId }]);
+    setProjectsData([projectsData, { newProjectId: project }]);
+    fetchData();
   };
 
   return (
